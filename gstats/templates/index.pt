@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+      <title>Git Statitstics</title>
+
+      <link href="${request.static_url('gstats:static/bootstrap.css')}" rel="stylesheet">
+        <link href="${request.static_url('gstats:static/style.css')}" rel="stylesheet">
+          <script src="${request.static_url('gstats:static/jquery.js')}"></script>
+          <script src="${request.static_url('gstats:static/amcharts.js')}"></script>
+          <script src="${request.static_url('gstats:static/xy.js')}"></script>
+
+        </head>
+
+        <body>
+          <body>
+
+            <div class="container">
+              <div class="page-header">
+                <h1>Git Statistics</h1>
+              </div>
+                <div class="wrapper">
+                  <form role="form"  class="form-inline">
+                    <div class="form-group">
+                      <label for="repository" class="col-sm-4 control-label">Repository Name</label>
+                      <input type="text" placeholder="Github Username / Repo" id="repository" class="form-control">
+                    </div>
+                    <button id="get_stats" class="btn btn-primary" type="button">
+                      Get Stats
+                    </button>
+                  </form>
+                </div> 
+
+                <div class="chart">
+                    <span id="loader" class="hide"><img src="${request.static_url('gstats:static/loader.gif')}"/><div class="loading-message">Initializing Stats</div></span>
+                    <div id="chartdiv" style="width: 600px; height: 400px;"></div>
+                </div>     
+                <div class="repositories">
+                  <h3>Search History</h3>
+                  <div id="${history.id}" class="rep" tal:repeat="history stats_history">
+                    <span class="username">${history.username}</span> / <span class="repository">${history.repository}</span>
+                  </div>
+
+                </div>
+
+            </div>
+
+                <script src="${request.static_url('gstats:static/app.js')}"></script>
+
+              </body>
+
+            </html>
